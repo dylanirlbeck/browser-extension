@@ -20,7 +20,13 @@ body {
     left: 50%;
     transform: translate(-50%,-50%);
 
+    background-size: contain;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+
     width: 80%;
+    height: 70%;
+
     text-align: center;
 }
 

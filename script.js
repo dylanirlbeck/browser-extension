@@ -22,13 +22,13 @@ function getArtworkData() {
             var windowWidth = window.innerWidth;
             var imageWidth = 800;
             if (windowWidth > 800) {
-                imageWidth = 1200;
+                imageWidth = 843;
             }
 
-            var imageLink = '<img src = ' + '"https://www.artic.edu/iiif/2/' + imageID + '/full/' + imageWidth + ',/0/default.jpg">'
-            document.getElementById("artwork-container").innerHTML = imageLink;
+            var imageUrl = 'https://www.artic.edu/iiif/2/' + imageID + '/full/' + imageWidth + ',/0/default.jpg';
+            document.getElementById("artwork-container").setAttribute('style', 'background-image: url(' + imageUrl + ')');
 
-            var downloadUrl = 'https://www.artic.edu/iiif/2/' + imageID + '/full/3000,/0/default.jpg'
+            var downloadUrl = 'https://www.artic.edu/iiif/2/' + imageID + '/full/3000,/0/default.jpg';
             document.getElementById("download-link").setAttribute('href', downloadUrl);
             document.getElementById("download-link").setAttribute('download', titlePrint + '.jpg');
         }
@@ -62,22 +62,7 @@ function getArtworkData() {
                                 "exists": {
                                     "field": "image_id"
                                 }
-                            },
-                            {
-                                "term" : {
-                                    "thumbnail.width": 3000
-
-                                }
-                            },
-                            {
-                                "range": {
-                                    "thumbnail.height": {
-                                        "gte": 1575,
-                                        "lte": 2175
-                                    }
-                                }
                             }
-
                         ]
                     }
                 },
