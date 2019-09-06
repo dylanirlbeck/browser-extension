@@ -38,14 +38,27 @@
         let imageHeight = artwork.thumbnail.height;
 
         //resize image to fit in browser
-        let newImageWidth = Math.round(window.innerWidth * .80);
+        //let newImageWidth = Math.round(window.innerWidth * .80);
+        let newImageWidth = Math.round(window.innerWidth);
         let newImageHeight = Math.round(window.innerHeight * .80);
 
         imageWidth = newImageWidth;
         imageHeight = newImageHeight;
 
         //use iiif protocol to display and fit image in browser window space
-        let imageLink = '<img src ="https://www.artic.edu/iiif/2/' + imageID + '/full/!' + imageWidth + ',' + imageHeight + '/0/default.jpg">'
+        let imageLink = 
+        '<img srcset="https://www.artic.edu/iiif/2/' + imageID + '/full/' + 843 + ',' + '/0/default.jpg 843w"' +
+            /*
+            https://www.artic.edu/iiif/2/' + imageID + '/full/' + 200 + ',' + '/0/default.jpg 200w,'+
+            'https://www.artic.edu/iiif/2/' + imageID + '/full/' + 400 + ',' + '/0/default.jpg 400w,'+ 
+            'https://www.artic.edu/iiif/2/' + imageID + '/full/' + 843 + ',' + '/0/default.jpg 843w,"'
+            */
+        'sizes="(max-width: 1920px)'+ imageWidth + 'px,'+
+                '(max-width: 1366px)' + imageWidth + 'px,'+
+                '(max-width: 1280px)' + imageWidth + 'px,'+
+                '(max-width: 1024px)' + imageWidth + 'px,'+
+                '(max-width: 768px)'+ imageWidth + 'px"'+
+        'src ="https://www.artic.edu/iiif/2/' + imageID + '/full/' + 843 + ',' + '/0/default.jpg" alt="need alt tag">';
         imageLink = '<a href="' + linkToArtwork + '">' + imageLink + '</a>';
         document.getElementById("artwork-container").innerHTML = imageLink;
 
